@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<title>Login - PokeControl</title>
+	<div th:replace="plantillas/base :: in_head"></div >
+	<link rel="stylesheet" th:href="@{/styles/style_login.css}" />
+</head >
+
+<body>
+	<nav th:replace="plantillas/base :: nav"></nav >
+
+ <h1>Lista de Pokemons</h1>
+    <ul>
+        <li th:each="pokemon : ${pokemonInfoList}">
+            <span th:text="${pokemon.number}"></span>
+            <span th:text="${pokemon.name}"></span>
+            <img th:src="${pokemon.imageUrl}" alt="Imagen del Pokemon"/>
+            <span th:text="${pokemon.description}"></span>
+        </li>
+    </ul>
+	<footer th:replace="plantillas/base :: footer"></footer>
+
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+   
+   
+</body>
+
+</html>

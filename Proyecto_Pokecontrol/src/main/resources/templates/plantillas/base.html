@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Plantilla 1 - PokeControl</title>
+	<div th:fragment="in_head">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+			crossorigin="anonymous"></script>
+		<link rel="stylesheet" th:href="@{/styles/style1.css}" />
+		<link rel="stylesheet" th:href="@{/styles/style_pokeball.css}" />
+		<!--<link rel="shortcut icon" type="image/png" href="../../static/img/logo.png" />-->
+	</div>
+</head>
+
+
+<body>
+	<div th:fragment="nav">
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Pokecontrol</a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li>
+							<a th:href="@{/}">Inicio</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+							<a th:href="@{/pokemon}">Pokedex</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+							<a th:href="@{/entrenador}">Entrenadores</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+							<a th:href="@{/combate}">Combates</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+							<a th:href="@{/habilidad}">Habilidad</a>
+						</li>
+						<li sec:authorize="isAuthenticated()">
+							<a th:href="@{/tipo}">Tipos</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li sec:authorize="!isAuthenticated()">
+							<a th:href="@{/auth/login}"><span class="glyphicon glyphicon-log-in"></span> Acceder</a>
+						</li>
+
+
+
+						<li class="dropdown" sec:authorize="isAuthenticated()">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">
+								<span sec:authentication="name"></span>
+								<span class="caret"></span>
+							</a>
+
+
+							<div class="dropdown-menu">
+								<a th:href="@{/auth/logout}" class="dropdown-item"><span class="glyphicon glyphicon-log-in"></span> Salir</a>
+							</div>
+
+
+
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</div>
+
+
+	<!-- Pokeball animada -->
+
+	<div th:fragment="pokeball_animada">
+		<div class="pokeball">
+			<div class="pokeball__button"></div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Footer -->
+	<footer>
+		<div th:fragment="footer">
+			<div id="columnas">
+
+				<div class="text-center">
+					<p>-
+					<p>
+					<P>-</P>
+				</div>
+
+				<div class="text-center">
+					<h3></h3>
+					<p>PokeControl&copy; 2022 Todos los derechos reservados
+					<p>
+					<P>@mr.katochi - Antonio García Abellán</P>
+				</div>
+
+				<div class="text-center">
+					<h5>Redes sociales / Contacto</h5>
+					<a href="mailto:agarciaabellan@gmail.com?Subject=MensajedeUsuarioPokecontrol"><img
+							src="/img/social/gmail.png"></a>
+					<a href=""><img src="/img/social/instagram.png"></a>
+					<a href=""><img src="/img/social/twiter.png"></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>
